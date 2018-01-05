@@ -108,18 +108,7 @@ angular.module('ui.bootstrap.datetimepicker',
             createEvalAttr("datepickerPopup", "dateFormat") +
             createEvalAttr("placeholder", "placeholder") +
             "/>\n" +
-            "</div>\n" +
-            "<div class=\"datetimepicker-wrapper\" ng-model=\"time\" ng-change=\"time_change()\" style=\"display:inline-block\">\n" +
-            "<timepicker " + [
-              ["hourStep"],
-              ["minuteStep"],
-              ["showMeridian"],
-              ["meredians"],
-              ["mousewheel"]
-          ].reduce(createAttrConcat, '') +
-            createEvalAttr("readonlyInput", "readonlyTime") +
-            "></timepicker>\n" +
-            "</div>";
+            "</div>\n";
           return tmpl;
         },
         controller: ['$scope',
