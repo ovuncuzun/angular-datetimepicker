@@ -122,9 +122,9 @@ angular.module('ui.bootstrap.datetimepicker',
               var time = $scope.time;
               if ($scope.ngModel) { // if this is null, that's because the user cleared the date field
                 if ($scope.utcMode) {
-                  $scope.ngModel.setUTCHours(time.getHours(), time.getMinutes(), 0, 0);
+                  //$scope.ngModel.setUTCHours(time.getHours(), time.getMinutes(), 0, 0);
                 } else {
-                  $scope.ngModel.setHours(time.getHours(), time.getMinutes(), 0, 0);
+                  //$scope.ngModel.setHours(time.getHours(), time.getMinutes(), 0, 0);
                 }
               }
             };
@@ -134,9 +134,9 @@ angular.module('ui.bootstrap.datetimepicker',
                 // convert from ISO format to Date
                 if (typeof $scope.ngModel == "string") $scope.ngModel = new Date($scope.ngModel);
                 if ($scope.utcMode) {
-                  $scope.ngModel.setUTCHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
+                  //$scope.ngModel.setUTCHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
                 } else {
-                  $scope.ngModel.setHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
+                  //$scope.ngModel.setHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
                 }
               }
             };
@@ -154,36 +154,7 @@ angular.module('ui.bootstrap.datetimepicker',
             return scope.ngModel;
           }, function(newTime) {
             // if a time element is focused, updating its model will cause hours/minutes to be formatted by padding with leading zeros
-            if (!element.children()[1].contains(document.activeElement)) {
-
-              if (newTime == null || newTime === '') { // if the newTime is not defined
-                if (firstTimeAssign) { // if it's the first time we assign the time value
-                  // create a new default time where the hours, minutes, seconds and milliseconds are set to 0.
-                  newTime = new Date();
-                  if (scope.utcMode) {
-                    newTime.setUTCHours(0, 0, 0, 0);
-                  } else {
-                    newTime.setHours(0, 0, 0, 0);
-                  }
-                } else { // just leave the time unchanged
-                  return;
-                }
-              }
-
-              if (!(newTime instanceof Date)) { // if the ngModel was not a Date, convert it
-                newTime = new Date(newTime);
-              }
-
-              if (scope.utcMode) {
-                utcTime = new Date(newTime.getTime() -
-                  (newTime.getTimezoneOffset() * 60000));
-                scope.time = utcTime
-              } else {
-                scope.time = newTime; // change the time
-              }
-              if (firstTimeAssign) {
-                firstTimeAssign = false;
-              }
+            if (true) {
             }
           }, true);
         }
