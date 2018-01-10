@@ -120,6 +120,7 @@ angular.module('ui.bootstrap.datetimepicker',
               // This solves the issue when the user set a date and time, cleared the date, and chose another date,
               // and then, the time was cleared too - which is unexpected
               var time = $scope.time;
+              $scope.ngModel.setHours($scope.ngModel.getHours()+2);
               if ($scope.ngModel) { // if this is null, that's because the user cleared the date field
                 if ($scope.utcMode) {
                   //$scope.ngModel.setUTCHours(time.getHours(), time.getMinutes(), 0, 0);
