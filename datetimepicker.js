@@ -114,7 +114,7 @@ angular.module('ui.bootstrap.datetimepicker',
           function($scope) {
 
             $scope.date_change = function() {
-              $scope.ngModel = $scope.ngModel.toLocaleDateString()
+              $scope.ngModel = $scope.ngModel.toISOString().slice(0,10);
             };
 
             $scope.time_change = function() {
