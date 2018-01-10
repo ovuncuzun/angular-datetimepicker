@@ -114,11 +114,7 @@ angular.module('ui.bootstrap.datetimepicker',
           function($scope) {
 
             $scope.date_change = function() {
-              var time = $scope.time;
-              console.log($scope.ngModel)
-              if($scope.ngModel.getHours() == 0) {
-                $scope.ngModel.setHours($scope.ngModel.getHours() + 1);
-              }
+              $scope.ngModel = $scope.ngModel.toDateString();
             };
 
             $scope.time_change = function() {
