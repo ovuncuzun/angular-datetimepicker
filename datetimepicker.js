@@ -114,7 +114,17 @@ angular.module('ui.bootstrap.datetimepicker',
           function($scope) {
 
             $scope.date_change = function() {
-              $scope.ngModel = $scope.ngModel.toDateString();
+              var day = $scope.ngModel.getDay()
+              var month = $scope.ngModel.getMonth()+1
+              var year = $scope.ngModel.getFullYear()
+              if (month <= 9) {
+                  month = "0" + month
+              }
+                
+              if (day <= 9) {
+                  day = "0" + day
+              }
+              $scope.ngModel = year + "-" +  month +  "-" +  day
             };
 
             $scope.time_change = function() {
