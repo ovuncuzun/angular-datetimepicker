@@ -115,6 +115,8 @@ angular.module('ui.bootstrap.datetimepicker',
 
             $scope.date_change = function() {
               var time = $scope.time;
+              console.log("ozzy99")
+              console.log($scope.ngModel.getHours())
               if($scope.ngModel.getHours() == 23) {
                 $scope.ngModel.setHours($scope.ngModel.getHours() + 1);
               }
