@@ -6,7 +6,6 @@ angular.module('ui.bootstrap.datetimepicker',
     restrict: 'EAC',
     require: 'ngModel',
     link: function(scope, element, attr, controller) {
-      //remove the default formatter from the input directive to prevent conflict
       controller.$formatters.shift();
     }
    }
@@ -115,32 +114,12 @@ angular.module('ui.bootstrap.datetimepicker',
           function($scope) {
 
             $scope.date_change = function() {
-              // If we changed the date only, set the time (h,m) on it.
-              // This is important in case the previous date was null.
-              // This solves the issue when the user set a date and time, cleared the date, and chose another date,
-              // and then, the time was cleared too - which is unexpected
-              var time = $scope.time;
-              $scope.ngModel.setHours($scope.ngModel.getHours()+2);
-              if ($scope.ngModel) { // if this is null, that's because the user cleared the date field
-                if ($scope.utcMode) {
-                  //$scope.ngModel.setUTCHours(time.getHours(), time.getMinutes(), 0, 0);
-                } else {
-                  //$scope.ngModel.setHours(time.getHours(), time.getMinutes(), 0, 0);
-                }
-              }
+              $scope.ngModel.setHours(0, 0, 0, 0);
             };
 
             $scope.time_change = function() {
-              if ($scope.ngModel && $scope.time) {
-                // convert from ISO format to Date
-                if (typeof $scope.ngModel == "string") $scope.ngModel = new Date($scope.ngModel);
-                if ($scope.utcMode) {
-                  //$scope.ngModel.setUTCHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
-                } else {
-                  //$scope.ngModel.setHours($scope.time.getHours(), $scope.time.getMinutes(), 0, 0);
-                }
-              }
             };
+              
             $scope.open = function($event) {
               $event.preventDefault();
               $event.stopPropagation();
@@ -154,7 +133,6 @@ angular.module('ui.bootstrap.datetimepicker',
           scope.$watch(function() {
             return scope.ngModel;
           }, function(newTime) {
-            // if a time element is focused, updating its model will cause hours/minutes to be formatted by padding with leading zeros
             if (true) {
             }
           }, true);
